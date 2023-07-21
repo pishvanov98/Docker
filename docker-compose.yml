@@ -1,13 +1,13 @@
 version: '3'
 services:
     #PHP Service
-    appAvel:
+    app:
         image: devilbox/php-fpm:8.1-work
-        container_name: appAvel
+        container_name: app
         restart: unless-stopped
         tty: true
         environment:
-            SERVICE_NAME: appAvel
+            SERVICE_NAME: app
             SERVICE_TAGS: dev
         working_dir: /var/www
         volumes:
@@ -16,9 +16,9 @@ services:
         networks:
             - app-network
     #Nginx Service
-    webserverAvel:
+    webserver
         image: nginx:alpine
-        container_name: webserverAvel
+        container_name: webserver
         restart: unless-stopped
         tty: true
         ports:
@@ -30,9 +30,9 @@ services:
         networks:
             - app-network
     #MySQL Service
-    dbAvel:
+    db:
         image: mariadb:10.3
-        container_name: dbAvel
+        container_name: db
         restart: always
 
         ports:
